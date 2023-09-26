@@ -21,8 +21,13 @@ python3 beta_binomial_model.py
 We model book ratings using a beta-binomial distribution, that I reparameterized
 for easier interpretation.
 
-Instead of using α and β, we use the mean of the distribution and a shape parameter:
+### Data
+- `a` indicates whether the author is male (0 or 1).
+- `r` indicates whether the reviewer is male (0 or 1).
+- `y` is the `rating - 1` (integers between 0-5).
 
+### Parameterization
+Instead of using α and β, we use the mean of the distribution and a shape parameter:
 - $\mu = n \cdot \frac{\alpha}{\alpha + \beta}$
 - $p = log(\frac{alpha+beta}{2})$
 - $n=5$
@@ -31,6 +36,7 @@ When $p = 0$, that means that the distribution is flat (uniform), <br>
 when $p > 0$, the distribution is concave,<br>
 when $p < 0$, the distribution is convex.
 
+### Parameters
 We fit an intercept and then effects for:
 - The author being male;
 - The reviewer being male;
@@ -42,9 +48,12 @@ The priors are set as such:
     - $\mu_0 \sim N(2.5, 0.2)$
     - $p_0 \sim N(0.0, 0.2)$
 - All Effects:
-    - $effect \sim N(0.0, 0.2)$
+    - $\lambda \sim N(0.0, 0.2)$
+
 
 The likelihood is then a Beta Binomial:
+- $\mu = \mu_0 + \lambda_{\mu, a} \cdot a + \lambda_{\mu, r} \cdot r + \lambda_{\mu, a:r} \cdot (a\cdotr)$
+- $p = p_0 + \lambda_{p, a} \cdot a + \lambda_{p, r} \cdot r + \lambda_{p, a:r} \cdot (a\cdotr)$
 - $\alpha = \frac{\mu \cdot e^{2 \cdot p}}{n}$
 - $\beta = e^{2 \cdot p} - \alpha$
 - $y \sim BetaBinomial(n, \alpha, \beta)$
