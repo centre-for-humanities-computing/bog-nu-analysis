@@ -29,7 +29,7 @@ for easier interpretation.
 ### Parameterization
 Instead of using α and β, we use the mean of the distribution and a shape parameter:
 - $\mu = n \cdot \frac{\alpha}{\alpha + \beta}$
-- $p = log(\frac{alpha+beta}{2})$
+- $p = log(\frac{\alpha+\beta}{2})$
 - $n=5$
 
 When $p = 0$, that means that the distribution is flat (uniform), <br>
