@@ -51,9 +51,12 @@ The priors are set as such:
     - $\lambda \sim N(0.0, 0.2)$
 
 
+### Outcome
+
 The likelihood is then a Beta Binomial:
-- $\mu = \mu_0 + \lambda_{\mu, a} \cdot a + \lambda_{\mu, r} \cdot r + \lambda_{\mu, a:r} \cdot (a\cdotr)$
-- $p = p_0 + \lambda_{p, a} \cdot a + \lambda_{p, r} \cdot r + \lambda_{p, a:r} \cdot (a\cdotr)$
+
+- $\mu = \mu_0 + \lambda_{\mu, a} \cdot a + \lambda_{\mu, r} \cdot r + \lambda_{\mu, a:r} \cdot (a \cdot r)$
+- $p = p_0 + \lambda_{p, a} \cdot a + \lambda_{p, r} \cdot r + \lambda_{p, a:r} \cdot (a \cdot r)$
 - $\alpha = \frac{\mu \cdot e^{2 \cdot p}}{n}$
 - $\beta = e^{2 \cdot p} - \alpha$
 - $y \sim BetaBinomial(n, \alpha, \beta)$
