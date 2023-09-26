@@ -1,20 +1,6 @@
 # bog-nu-analysis
 Bayesian Beta Binomial regression analysis of Bog.nu ratings.
 
-## Inference
-
-Install requirements:
-
-```bash
-pip install -r requirements.txt
-```
-
-Then run the scipt, which will save a parameter summary in the `results/` directory and figures in the `figures/` directory.
-The data has to be in tab separated format under `dat/data_w_themes.csv`.
-
-```bash
-python3 beta_binomial_model.py
-```
 
 ## Model description
 
@@ -60,3 +46,18 @@ The likelihood is then a Beta Binomial:
 - $\alpha = \frac{\mu \cdot e^{2 \cdot p}}{n}$
 - $\beta = e^{2 \cdot p} - \alpha$
 - $y \sim BetaBinomial(n, \alpha, \beta)$
+
+## Inference
+
+Install requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+Then run the scipt, which will save a parameter summary in the `results/` directory and figures in the `figures/` directory.
+The data has to be in tab separated format under `dat/data_w_themes.csv`.
+
+```bash
+python3 beta_binomial_model.py
+```
